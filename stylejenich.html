@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>StyleJenich Fashion - Cool & Stylish</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  /* Reset and base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #fefefe;
+    color: #222222;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Layout Containers */
+  header, footer {
+    background: rgba(255 255 255 / 0.85);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid #e1e1e1;
+    position: sticky;
+    top: 0;
+    z-index: 101;
+  }
+
+  .container {
+    max-width: 1200px;
+    padding: 0 24px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  header {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: 1.2px;
+    color: #111111;
+    user-select: none;
+  }
+  nav {
+    display: flex;
+    gap: 24px;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    position: relative;
+    color: #444444;
+    transition: color 0.3s ease;
+  }
+  nav a:hover,
+  nav a:focus {
+    color: #10b981; /* Emerald green */
+  }
+  nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 0;
+    height: 2px;
+    background: #10b981;
+    transition: width 0.3s ease;
+  }
+  nav a:hover::after,
+  nav a:focus::after {
+    width: 100%;
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    background: linear-gradient(135deg, #10b981cc, #059669cc);
+    color: white;
+    padding: 100px 24px 120px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    right: -100px;
+    width: 320px;
+    height: 320px;
+    background: rgba(255 255 255 / 0.15);
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .hero h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 16px;
+    line-height: 1.05;
+    letter-spacing: 1.3px;
+  }
+  .hero p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #d1f2e8;
+  }
+  .btn-primary {
+    background: #10b981;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 48px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(16,185,129,0.35);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn-primary:hover, .btn-primary:focus {
+    background: #059669;
+    box-shadow: 0 12px 28px rgba(5,150,105,0.6);
+  }
+
+  /* Collections Section */
+  .collections {
+    padding: 80px 24px;
+    max-width: 1200px;
+    margin: -100px auto 120px; /* Bring up closer to hero visually */
+    position: relative;
+    z-index: 1;
+  }
+  .section-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 60px;
+    letter-spacing: 1.1px;
+    color: #111111;
+  }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 32px;
+  }
+  .card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgb(0 0 0 / 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .card:hover,
+  .card:focus-within {
+    transform: translateY(-8px);
+    box-shadow: 0 26px 46px rgb(0 0 0 / 0.15);
+  }
+  .card-image {
+    position: relative;
+    flex-grow: 1;
+    overflow: hidden;
+  }
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .card:hover .card-image img,
+  .card:focus-within .card-image img {
+    transform: scale(1.05);
+  }
+  .card-content {
+    padding: 24px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .card-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #111111;
+  }
+  .card-description {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #555555;
+    flex-grow: 1;
+  }
+  .card-button {
+    align-self: flex-start;
+    background: transparent;
+    border: 2px solid #10b981;
+    padding: 8px 24px;
+    border-radius: 40px;
+    color: #10b981;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+  }
+  .card-button:hover,
+  .card-button:focus {
+    background-color: #10b981;
+    color: white;
+  }
+
+  /* Footer */
+  footer {
+    background: #111;
+    color: #ddd;
+    padding: 48px 24px;
+  }
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .footer-section {
+    flex: 1 1 180px;
+  }
+  .footer-section h4 {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    color: white;
+  }
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-section li {
+    margin-bottom: 12px;
+  }
+  .footer-section a {
+    color: #bbb;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+  }
+  .footer-section a:hover,
+  .footer-section a:focus {
+    color: #10b981;
+  }
+  .footer-bottom {
+    font-size: 0.9rem;
+    text-align: center;
+    color: #555555;
+  }
+
+  /* Social icons container inside footer-section */
+  .footer-social {
+    display: flex;
+    gap: 16px;
+    padding-left: 0;
+  }
+  .footer-social li {
+    list-style: none;
+  }
+  .footer-social a svg {
+    fill: #bbb;
+    width: 24px;
+    height: 24px;
+    transition: fill 0.3s ease;
+  }
+  .footer-social a:hover svg,
+  .footer-social a:focus svg {
+    fill: #10b981;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px){
+    .hero h1 {
+      font-size: 2.4rem;
+    }
+    .hero p {
+      font-size: 1rem;
+    }
+    .collections {
+      padding: 40px 16px 80px;
+      margin: -60px auto 100px;
+    }
+    .cards-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    nav {
+      gap: 16px;
+    }
+
+    .social-links a {
+      color: #fff;
+      margin: 0 15px;
+      font-size: 32px;
+      transition: color 0.3s;
+    }
+  }
+
+  /* Optional: customize per platform */
+  .social-links a.facebook:hover { color: #1877f2; }
+  .social-links a.pinterest:hover { color: #e60023; }
+  .social-links a.instagram:hover { color: #e1206c; }
+</style>
+</head>
+<body>
+  <header role="banner">
+    <div class="container">
+      <a href="#" class="logo" aria-label="StyleJenich Homepage">StyleJenich</a>
+      <nav role="navigation" aria-label="Primary navigation">
+        <a href="#collections" tabindex="0">Collections</a>
+        <a href="#about" tabindex="0">About</a>
+        <a href="#contact" tabindex="0">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Featured fashion collection promotion">
+      <div class="hero-content">
+        <h1>Discover the Coolest Styles of This Season</h1>
+        <p>Unveil your style potential with elegant, sustainable, and trend-forward fashion curated just for you.</p>
+        <button class="btn-primary" aria-label="Shop now button">Shop Now</button>
+      </div>
+      <img src="images/Ankara Blouse.jpg" alt="Model showcasing our latest Ankara Blouse in an urban environment with stylish pose" style="display:none;" />
+    </section>
+
+    <section class="collections" id="collections" aria-label="Fashion collections">
+      <h2 class="section-title">Collections</h2>
+      <div class="cards-grid">
+        <article class="card" tabindex="0" aria-labelledby="c1-title c1-desc">
+          <div class="card-image">
+            <img src="images/Ankara Gown.jpg"  alt="Ankara Gown with light fabrics and fresh colors" />
+          </div>
+          <div class="card-content">
+            <h3 id="c1-title" class="card-title">Ankara Collection</h3>
+            <p id="c1-desc" class="card-description">Light, airy fabrics in fresh colors designed for your adventures.</p>
+            <button class="card-button" aria-label="Explore Ankara Collection">Explore</button>
+          </div>
+        </article>
+        <article class="card" tabindex="0" aria-labelledby="c2-title c2-desc">
+          <div class="card-image">
+            <img src="images/Black and Whiite.jpg" alt="Summer collection fashion with vibrant styles and breathable materials" />
+          </div>
+          <div class="card-content">
+            <h3 id="c2-title" class="card-title"> Collection</h3>
+            <p id="c2-desc" class="card-description">Vibrant styles and breathable materials to keep you cool in the heat.</p>
+            <button class="card-button" aria-label="Explore Collection">Explore</button>
+          </div>
+        </article>
+        <article class="card" tabindex="0" aria-labelledby="c3-title c3-desc">
+          <div class="card-image">
+            <img src="images/Ankara Blouse.jpg" alt="Nigerian Vibes collection fashion with cozy layers and warm colors" />
+          </div>
+          <div class="card-content">
+            <h3 id="c3-title" class="card-title">Nigerian Vibes</h3>
+            <p id="c3-desc" class="card-description">Style our Ankara Blouse anyway be it with palazzo or skirt or trouser. It fits with any design.</p>
+            <button class="card-button" aria-label="Explore Nigerian Vibes">Explore</button>
+          </div>
+        </article>
+        <article class="card" tabindex="0" aria-labelledby="c4-title c4-desc">
+          <div class="card-image">
+            <img src="images/Gown.jpg" alt="Wonderful collection fashion with elegant designs and rich textures" />
+          </div>
+          <div class="card-content">
+            <h3 id="c4-title" class="card-title">StyleJenich Deluxe</h3>
+            <p id="c4-desc" class="card-description">Specially designed by the StyleJenich Crew.</p>
+            <button class="card-button" aria-label="Explore StyleJenich Deluxe">Explore</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" aria-label="About StyleJenich">
+      <div class="container" style="max-width: 800px; margin-bottom: 120px;">
+        <h2 class="section-title">About Us</h2>
+        <p style="font-size: 1.1rem; color:#444; text-align: center; line-height: 1.7;">
+          StyleJenich is dedicated to bringing you the latest trends with a touch of elegance and sustainability.  
+          We carefully curate each collection, marrying modern styles with timeless quality. Our vision is to empower your personal style with cool, stylish pieces that are both comfortable and impactful.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" aria-label="Contact section">
+      <div class="container" style="max-width: 700px;">
+        <h2 class="section-title">Get in Touch</h2>
+        <form action="#" method="post" style="display: flex; flex-direction: column; gap: 24px;">
+          <label for="name" style="font-weight:600; font-size:1rem; color:#222;">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your Name" required style="padding:12px 16px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;" />
+
+          <label for="email" style="font-weight:600; font-size:1rem; color:#222;">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required style="padding:12px 16px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;" />
+
+          <label for="message" style="font-weight:600; font-size:1rem; color:#222;">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your message..." required style="padding:12px 16px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem; resize: vertical;"></textarea>
+
+          <button type="submit" class="btn-primary" aria-label="Send message button" style="align-self: flex-start;">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo" aria-label="Site footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-section">
+          <h4>About</h4>
+          <ul>
+            <li><a href="#about" tabindex="0">Our Story</a></li>
+            <li><a href="#collections" tabindex="0">Collections</a></li>
+            <li><a href="#contact" tabindex="0">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Customer Care</h4>
+          <ul>
+            <li><a href="#" tabindex="0">Shipping &amp; Returns</a></li>
+            <li><a href="#" tabindex="0">FAQs</a></li>
+            <li><a href="#" tabindex="0">Order Tracking</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Social</h4>
+          <ul class="footer-social" aria-label="Social media links">
+            <li>
+              <a href="#" aria-label="Facebook" tabindex="0">
+                <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M22.675 0h-21.35C.591 0 0 .592 0 1.32v21.36C0 23.406.59 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.657-4.788 1.325 0 2.464.1 2.795.144v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.312h3.588l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.412 24 22.678V1.32C24 .592 23.406 0 22.675 0z" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#" aria-label="Instagram" tabindex="0">
+                <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zM12 7a5 5 0 100 10 5 5 0 000-10zm6.125-1.5a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0zM12 9.75a2.25 2.25 0 110 4.5 2.25 2.25 0 010-4.5z" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#" aria-label="Twitter" tabindex="0">
+                <span class="material-icons" aria-hidden="true">twitter</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2025 StyleJenich. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
+

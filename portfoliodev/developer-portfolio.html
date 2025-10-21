@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanre Adebayo | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            --primary: #3a86ff;
+            --primary-dark: #2667cc;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background: var(--light);
+            color: var(--dark);
+            transition: background 0.3s, color 0.3s;
+        }
+        body.dark-mode {
+            background: #121212;
+            color: var(--light);
+        }
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(248, 249, 250, 0.95);
+            box-shadow: var(--box-shadow);
+            z-index: 1000;
+        }
+        body.dark-mode header {
+            background: rgba(26, 26, 46, 0.95);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+        }
+        nav a {
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            display: block;
+            height: 2px;
+            background: var(--primary);
+            width: 0;
+            transition: 0.3s;
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+        }
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+        .hero img {
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+        }
+        .hero h1 {
+            font-size: 3rem;
+        }
+        .hero h1 span {
+            color: var(--primary);
+        }
+        .subtitle {
+            color: var(--gray);
+            margin: 1rem 0;
+        }
+        body.dark-mode .subtitle {
+            color: #a3a3a3;
+        }
+        .btn {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            border: none;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 5rem 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            height: 4px;
+            width: 80px;
+            background: var(--primary);
+            margin: 0.5rem auto 0;
+        }
+
+        /* ===== ABOUT ===== */
+        .about-content {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .skill {
+            background: var(--gray-light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        body.dark-mode .skill {
+            background: #2d2d2d;
+        }
+
+        /* ===== PROJECTS ===== */
+        .projects-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+        .project-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: 0.3s;
+        }
+        body.dark-mode .project-card {
+            background: #2d2d2d;
+        }
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-info {
+            padding: 1rem;
+        }
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .project-tag {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.3rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-container {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .contact-form {
+            flex: 1;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+        }
+        body.dark-mode .contact-form {
+            background: #2d2d2d;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 5px;
+            border: 1px solid var(--gray-light);
+        }
+        body.dark-mode input, body.dark-mode textarea {
+            background: #3d3d3d;
+            color: #fff;
+            border-color: #4d4d4d;
+        }
+        button[type="submit"] {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                background: rgba(248, 249, 250, 0.95);
+                width: 100%;
+                height: calc(100vh - 70px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: 0.3s;
+            }
+            body.dark-mode nav ul {
+                background: rgba(26, 26, 46, 0.95);
+            }
+            nav ul.active {
+                left: 0;
+            }
+            .nav-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">Lanre Adebayo</div>
+            <ul id="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            <button class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></button>
+        </nav>
+    </div>
+</header>
+
+<section id="home" class="hero container">
+    <div>
+        <h1>Hi, I'm <span>Lanre Adebayo</span></h1>
+        <p class="subtitle">Full Stack Developer creating functional, user-friendly applications with passion and precision.</p>
+        <a href="#projects" class="btn">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+    </div>
+    <img src="images/me.jpg" alt="Lanre Adebayo">
+</section>
+
+<section id="about">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I’m a full-stack developer with expertise in modern web technologies. I love solving problems and delivering solutions that make life easier for users.</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">React</div>
+                <div class="skill">Node.js</div>
+                <div class="skill">Python</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="images/style.png" alt="">
+                <div class="project-info">
+                    <h3>Portfolio Website</h3>
+                    <p>Responsive personal portfolio with dark mode and smooth animations.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">HTML</span>
+                        <span class="project-tag">CSS</span>
+                        <span class="project-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="images/e-commerce.webp" alt="">
+                <div class="project-info">
+                    <h3>E-commerce App</h3>
+                    <p>Full-featured e-commerce application with payment gateway integration.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">React</span>
+                        <span class="project-tag">Node.js</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-container">
+            <form class="contact-form" id="contact-form">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Lanre Adebayo. All Rights Reserved.</p>
+</footer>
+
+<script>
+    // Mobile Nav Toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+        link.addEventListener('click', () => navMenu.classList.remove('active'));
+    });
+
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    if (localStorage.getItem('theme') === 'dark') body.classList.add('dark-mode');
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Contact Form (Demo - replace with EmailJS or backend)
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Message sent! (Demo - connect to EmailJS for real messages)');
+        this.reset();
+    });
+</script>
+</body>
+</html>

@@ -1,260 +1,926 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StyleJenich Fashion | Custom Fashion Design</title>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --primary-color: #d4af37;
-      --text-color: #333;
-      --bg-color: #fff;
-      --font-heading: 'Playfair Display', serif;
-      --font-body: 'Roboto', sans-serif;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: var(--font-body);
-      color: var(--text-color);
-      background-color: var(--bg-color);
-      line-height: 1.6;
-    }
-
-    header {
-      background: var(--primary-color);
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      position: relative;
-    }
-
-    header h1 {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      letter-spacing: 1px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #000;
-    }
-
-    /* Hamburger button */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      background: white;
-      height: 3px;
-      width: 25px;
-      margin: 4px 0;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-
-    /* Hero section */
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: url('images/fashion-hero.jpg') center/cover no-repeat;
-      color: white;
-      position: relative;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .hero h2 {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero button {
-      background: var(--primary-color);
-      border: none;
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .hero button:hover {
-      background: #b8972f;
-    }
-
-    /* About section */
-    .about {
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    .about h2 {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .about p {
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 1rem;
-    }
-
-    /* Gallery */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      padding: 3rem 2rem;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Footer */
-    footer {
-      background: var(--primary-color);
-      color: white;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    footer p {
-      font-size: 0.9rem;
-    }
-
-    /* Responsive Menu */
-    @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-        background: var(--primary-color);
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        display: none;
-        text-align: center;
-      }
-
-      nav ul.show {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleJenich Fashion | Custom Fashion Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a2a2a;
+            --secondary: #f8f1e9;
+            --accent: #b48a65;
+            --text: #333;
+            --light-text: #777;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            background-color: var(--secondary);
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(248, 241, 233, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-text {
+            width: 50%;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: var(--light-text);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 3px;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .hero-image {
+            width: 45%;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Featured Collections */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .collections {
+            padding: 80px 0;
+        }
+        
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .collection-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .collection-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .collection-img {
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .collection-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .collection-item:hover .collection-img img {
+            transform: scale(1.05);
+        }
+        
+        .collection-info {
+            padding: 20px;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .collection-info h3 {
+            margin-bottom: 10px;
+        }
+        
+        .collection-info p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .about-image {
+            width: 40%;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            width: 55%;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--light-text);
+        }
+        
+        /* Pages */
+        .page {
+            min-height: 100vh;
+            padding: 120px 0 80px;
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Gallery Page */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .modal-content {
+            max-width: 800px;
+            width: 100%;
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .modal-img {
+            width: 100%;
+            height: 500px;
+        }
+        
+        .modal-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .modal-info {
+            padding: 20px;
+        }
+        
+        .modal-info h3 {
+            margin-bottom: 10px;
+        }
+        
+        .modal-info p {
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Contact Page */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-family: 'Montserrat', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            list-style: none;
+            margin-bottom: 20px;
+            justify-content: center;
+            margin-top: 10px;
+            gap: 20px;
+        }
+        
+        .social-links li {
+            margin: 0 10px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 50px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content,
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero-text,
+            .hero-image,
+            .about-text,
+            .about-image {
+                width: 100%;
+            }
+            
+            .hero-text {
+                margin-bottom: 40px;
+            }
+            
+            .about-image {
+                margin-bottom: 40px;
+            }
+            
+            .hero-image {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--secondary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            } 
+        }
+            .social-links a.facebook:hover { color: #1877f2; }   /* Facebook Blue */
+            .social-links a.instagram:hover { color: #e1306c; } /* Instagram Pink */
+            .social-links a.pinterest:hover { color: #e60023; } /* Pinterest Red */
+    </style>
 </head>
-
 <body>
-  <header>
-    <h1>StyleJenich Fashion</h1>
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <nav>
-      <ul id="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="hero-content">
-        <h2>Redefining African Fashion</h2>
-        <p>We specialize in custom designs that celebrate culture, creativity, and confidence.</p>
-        <button>Explore Our Collection</button>
-      </div>
-    </section>
-
-    <section class="about">
-      <h2>About Us</h2>
-      <p>At StyleJenich Fashion, we craft custom designs that blend tradition and modern elegance. From bridal gowns to
-        everyday wear, every piece is tailored to perfection for bold individuals who express themselves through fashion.</p>
-    </section>
-
-    <section class="gallery">
-      <img src="images/fashion1.jpg" alt="Custom Ankara design" />
-      <img src="images/fashion2.jpg" alt="Elegant evening gown" />
-      <img src="images/fashion3.jpg" alt="Casual chic outfit" />
-      <img src="images/fashion4.jpg" alt="Men’s fashion suit" />
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 StyleJenich Fashion. All Rights Reserved.</p>
-  </footer>
-
-  <script>
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-      menuToggle.classList.toggle('open');
-    });
-  </script>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo" data-page="home">StyleJenich Fashion</a>
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="gallery">Gallery</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Home Page -->
+        <section class="page active" id="home">
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1>Handcrafted Elegance Tailored Just For You</h1>
+                            <p>Experience the artistry and passion behind every stitch. Custom designs that celebrate your unique style and personality. Where fashion meets craftsmanship.</p>
+                            <a href="#" class="btn" data-page="gallery">View Collections</a>
+                        </div>
+                        <div class="hero-image">
+                            <img src="images/StyleJenich-logo.jpg" alt="Artist behind the scenes">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="collections">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Featured Collections</h2>
+                        <p>Explore our latest creations showcasing the perfect blend of tradition and contemporary design.</p>
+                    </div>
+                    
+                    <div class="collection-grid">
+                        <div class="collection-item">
+                            <div class="collection-img">
+                                <img src="images/feyi-green-dress-white-bottom.jpg" alt="Casual and Sunday Wears for 12 year olds">
+                            </div>
+                            <div class="collection-info">
+                                <h3>Sunday Wears</h3>
+                                <p>African Sunday Wears for 12 year olds</p>
+                            </div>
+                        </div>
+                        
+                        <div class="collection-item">
+                            <div class="collection-img">
+                                <img src="images/mummy-black-brown.jpg" alt="Female Business Formal Wear">
+                            </div>
+                            <div class="collection-info">
+                                <h3>Female Formal Wear</h3>
+                                <p>Tailored business and formal wear for females</p>
+                            </div>
+                        </div>
+                        
+                        <div class="collection-item">
+                            <div class="collection-img">
+                                <img src="images/mummy-creamdress3.jpg" alt="Flowing gown with elegant lace details and flowing silhouettes">
+                            </div>
+                            <div class="collection-info">
+                                <h3>Lace Gown</h3>
+                                <p>Special occasion gowns</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="about">
+                <div class="container">
+                    <div class="about-content">
+                        <div class="about-image">
+                            <img src="images/Artisan.jpg" alt="Fashion designer working at a sewing machine in a bright studio filled with fabric rolls and sketches">
+                        </div>
+                        <div class="about-text">
+                            <h2>The Artisan Behind the Designs</h2>
+                            <p>With over 10 years of experience in the fashion industry, our designer combines traditional techniques with contemporary aesthetics to create garments that tell a story.</p>
+                            <p>Each piece is carefully conceptualized, from the initial sketch to the final stitch, ensuring impeccable quality and attention to detail that sets our creations apart.</p>
+                            <a href="#" class="btn" data-page="about">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        
+        <!-- Gallery Page -->
+        <section class="page" id="gallery">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Design Portfolio</h2>
+                    <p>Browse through our collection of custom designs. Click on any image to view details.</p>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-title="Evening Elegance" data-description="A flowing silk gown with hand-beaded neckline">
+                        <img src="images/mummy-pink-silk-dress2.jpg" alt="Evening gown in emerald green silk with intricate beadwork on the bodice">
+                    </div>
+                    <div class="gallery-item" data-title="Casual Chic" data-description="Linen blend separates perfect for day to night">
+                        <img src="images/mummy-black-white.jpg" alt="Beige linen pantsuit with wide-leg trousers and tailored blazer">
+                    </div>
+                    <div class="gallery-item" data-title="Winter Romance" data-description="Wool coat with velvet trim and hidden details">
+                        <img src="images/mummy-cheetah dress.jpg" alt="Burgundy wool coat with black velvet collar and hidden button closure">
+                    </div>
+                    <div class="gallery-item" data-title="Bohemian Dreams" data-description="Flowy maxi dress with hand-embroidered hem">
+                        <img src="images/mummy-black-with-wig.jpg" alt="Multicolored bohemian-style maxi dress with intricate embroidery along the hem">
+                    </div>
+                    <div class="gallery-item" data-title="Modern Classic" data-description="Tailored suit with contemporary details">
+                        <img src="images/feyi-blackdress.jpg" alt="Navy blue pinstripe suit with notched lapel and double-breasted closure">
+                    </div>
+                    <div class="gallery-item" data-title="Garden Party" data-description="Light cotton dress with delicate floral print">
+                        <img src="images/mummy-black-brown.jpg" alt="White cotton dress with small pink floral print and puffed sleeves">
+                    </div>
+                    <div class="gallery-item" data-title="Metropolitan Edge" data-description="Leather jacket with contrast stitching">
+                        <img src="images/mummy-free-gown.jpg" alt="Black leather biker jacket with white contrast stitching and silver hardware">
+                    </div>
+                    <div class="gallery-item" data-title="Golden Hour" data-description="Sequined cocktail dress for special occasions">
+                        <img src="images/mummy-redwithwhitecolor.jpg" alt="Gold sequined midi dress with V-neckline and fitted silhouette">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal">
+                <button class="close-modal">&times;</button>
+                <div class="modal-content">
+                    <div class="modal-img">
+                        <img src="" alt="" class="modal-main-img">
+                    </div>
+                    <div class="modal-info">
+                        <h3 class="modal-title"></h3>
+                        <p class="modal-description"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Page -->
+        <section class="page" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="images/mummy-yellow-with-cheetah2.jpg" alt="Portrait of the fashion designer standing in her studio surrounded by fabrics and fashion sketches">
+                    </div>
+                    <div class="about-text">
+                        <h2>Our Vision</h2>
+                        <p>Founded on the principles of quality craftsmanship and personalized design, Elegant Stitches was born from a passion for creating garments that make women feel confident and beautiful.</p>
+                        <p>Every piece we create is made with meticulous attention to detail, using only the finest fabrics and materials. We believe fashion should be as unique as the individual wearing it.</p>
+                        <h3>The Process</h3>
+                        <p>Our design process begins with a consultation where we discuss your vision, lifestyle needs, and personal style. From there, we create custom sketches and select fabrics together before beginning construction.</p>
+                        <p>Each garment goes through multiple fittings to ensure the perfect fit and silhouette. The result is a one-of-a-kind piece that reflects your personality and fits you perfectly.</p>
+                    </div>
+                </div>
+                
+                <div class="studio-section" style="margin-top: 80px;">
+                    <div class="section-title">
+                        <h2>Our Studio</h2>
+                    </div>
+                    
+                    <div class="studio-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px;">
+                        <div class="studio-item">
+                            <img src="images/mummy-pink-dress-on-mannequin2.jpg" alt="Design studio workspace showing fabric swatches, sketches, and sewing tools organized neatly">
+                        </div>
+                        <div class="studio-item">
+                            <img src="images/mummy-pink-dress-on-mannequin.jpg" alt="Wall of colorful fabric rolls organized by color and material type in the studio">
+                        </div>
+                        <div class="studio-item">
+                            <img src="images/mummy-gc-redsleeves.jpg" alt="Detail shot of sewing machine with fabric being stitched with precision">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Page -->
+        <section class="page" id="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Get In Touch</h2>
+                    <p>Ready to begin your custom design journey? Contact us to schedule a consultation.</p>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tell Us About Your Project</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info" style="margin-top: 60px; display: flex; justify-content: space-around; flex-wrap: wrap;">
+                    <div class="info-item" style="text-align: center; margin: 20px;">
+                        <h3 style="margin-bottom: 15px; color: var(--accent);">Studio Address</h3>
+                        <p>Bishop Oderinde Street Off AIT Road</p>
+                        <p>Alagbado</p>
+                        <p>Lagos,  NG 100001</p>
+                    </div>
+                    <div class="info-item" style="text-align: center; margin: 20px;">
+                        <h3 style="margin-bottom: 15px; color: var(--accent);">Contact Info</h3>
+                        <p>jennifer.adebayo@gmail.com</p>
+                        <p>(+234) 803 328 5046</p>
+                    </div>
+                    <div class="info-item" style="text-align: center; margin: 20px;">
+                        <h3 style="margin-bottom: 15px; color: var(--accent);">Working Hours</h3>
+                        <p>Monday - Friday: 10am - 6pm</p>
+                        <p>Saturday: 11am - 4pm</p>
+                        <p>Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="copyright">© 2025 StyleJenich Fashion. All rights reserved.</p>
+            </div>
+        </div>
+        <p>Connect with us:</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/1Anvcqb5aj/?mibextid=wwXIfr" target="_blank" class="facebook" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/stylejenich1?igsh=eHFmMzE4YnVmeWU1&utm_source=ig_contact_invite" target="_blank" class="instagram" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://pin.it/3KUDSE8kp" target="_blank" class="pinterest" aria-label="Pinterest">
+                <i class="fab fa-pinterest"></i>
+            </a>
+        </div>
+    </footer>
+    
+    <script>
+        // Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        const hamburger = document.querySelector('.hamburger');
+        const navList = document.querySelector('.nav-links');
+        
+        // Set active page
+        function setActivePage(pageId) {
+            pages.forEach(page => {
+                page.classList.remove('active');
+                if (page.id === pageId) {
+                    page.classList.add('active');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === pageId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Close mobile menu if open
+            navList.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+        
+        // Handle navigation clicks
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.dataset.page;
+                setActivePage(pageId);
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // Handle logo click (go to home)
+        document.querySelector('.logo').addEventListener('click', (e) => {
+            e.preventDefault();
+            setActivePage('home');
+            window.scrollTo(0, 0);
+        });
+        
+        // Hamburger menu toggle
+        hamburger.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        // Gallery modal
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const modal = document.querySelector('.modal');
+        const modalImg = document.querySelector('.modal-main-img');
+        const modalTitle = document.querySelector('.modal-title');
+        const modalDesc = document.querySelector('.modal-description');
+        const closeModal = document.querySelector('.close-modal');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                const title = item.dataset.title;
+                const desc = item.dataset.description;
+                
+                modalImg.src = imgSrc;
+                modalImg.alt = item.querySelector('img').alt;
+                modalTitle.textContent = title;
+                modalDesc.textContent = desc;
+                
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Contact form
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the form data to a server
+            // For demo, we'll just show an alert
+            alert(`Thank you for your message, ${name}! We'll get back to you soon at ${email}.`);
+            
+            contactForm.reset();
+        });
+        
+        // Scroll effect for header
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                document.querySelector('header').style.background = 'rgba(42, 42, 42, 0.95)';
+                document.querySelectorAll('.nav-links a, .logo').forEach(el => {
+                    el.style.color = 'white';
+                });
+            } else {
+                document.querySelector('header').style.background = 'rgba(248, 241, 233, 0.95)';
+                document.querySelectorAll('.nav-links a, .logo').forEach(el => {
+                    el.style.color = 'var(--primary)';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
+
